@@ -1,7 +1,15 @@
-{
+[
+  {
     "name": "Rogério",
     "company": "Alun",
     "email": "rogerio@alun.com.br",
     "stage": "novo",
     "created": "2026-09-03"
-}
+  },
+  {
+    "name": "Matheus",
+    "email": "Alun",
+    "status": "novo",
+    "created": "2026-09-14"
+  }
+]
