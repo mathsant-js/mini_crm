@@ -1,4 +1,4 @@
-import json
+import json, csv
 from pathlib import Path
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
@@ -34,3 +34,22 @@ def read_leads_search(query):
 
     print(results)
     return results
+
+def export_csv():
+    """Exporta todos leads para csv e retorna o caminho do arquivo CSV"""
+
+    path_csv = DATA_DIR / "leads.csv"
+    leads = read_leads()
+
+    try:
+        with path_csv.open("w", newline="", encoding="utf-8") as file_csv:
+            writer = csv.DictWriter(file_csv, leads[0].keys())
+            writer.writeheader()
+            
+            for dict_row in leads:
+                writer.writerow(dict_row)
+    
+        return path_csv
+    
+    except PermissionError:
+        return None
