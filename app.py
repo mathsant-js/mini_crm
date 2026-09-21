@@ -27,11 +27,9 @@ def main():
         
         if opt == "1":
             add_lead()
-            pass
         
         elif opt == "2":
             list_leads()
-            pass
         
         elif opt == "0":
             print("\nPrograma Encerrado!")
