@@ -14,7 +14,11 @@ def add_lead():
     
 def list_leads():
     leads = repo.read_leads()
-    print(leads)
+    
+    print(f"## | {"Nome":<15} | E-mail")
+
+    for i, lead in enumerate(leads):
+        print(f"{i:02d} | {lead["name"]:<15} | {lead["email"]}")
 
 def main():
     while True:
