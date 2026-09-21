@@ -20,5 +20,17 @@ def create_leads(lead_dict):
     leads.append(lead_dict)
     DB_PATH.write_text(json.dumps(leads, ensure_ascii=False, indent=2), encoding="utf-8")
     
-if __name__ == "__main__":
-    print(read_leads())
+# BUSCAR LEADS PELA QUERY
+def read_leads_search(query):
+    """Função que busca por leads a partir da query e retorna uma lista com resultados"""
+    leads = read_leads()
+    results = []
+
+    for i, lead in enumerate(leads):
+        txt_lead = f"{lead["name"]} {lead["email"]}".lower()
+        
+        if query.lower() in txt_lead:
+            results.append((i, lead))
+
+    print(results)
+    return results

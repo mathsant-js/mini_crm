@@ -20,11 +20,28 @@ def list_leads():
     for i, lead in enumerate(leads):
         print(f"{i:02d} | {lead["name"]:<15} | {lead["email"]}")
 
+def search_leads():
+    query = input("Buscar por: ").strip().lower()
+
+    # CONTROL!!
+    # comparação entre a query digitada e o leads.json
+    search_results = repo.read_leads_search(query)
+
+    print(f"## | {"Nome":<15} | E-mail")
+
+    for i, lead in search_results:
+        print(f"{i:02d} | {lead["name"]:<15} | {lead["email"]}")
+
+def export_leads():
+    print("lead exportado")
+
 def main():
     while True:
         print("\nMini CRM de leads")
         print("[1] - Adicionar Lead")
         print("[2] - Listar Leads")
+        print("[3] - Buscar (nome/e-mail)")
+        print("[4] - Exportar para CSV")
         print("[0] - Sair do Programa")
         
         opt = input("\nDigite uma opção: ")
@@ -35,6 +52,12 @@ def main():
         elif opt == "2":
             list_leads()
         
+        elif opt == "3":
+            search_leads()
+
+        elif opt == "4":
+            export_leads()
+
         elif opt == "0":
             print("\nPrograma Encerrado!")
             break
