@@ -6,6 +6,7 @@ DATA_DIR.mkdir(exist_ok=True)
 DB_PATH = DATA_DIR / "leads.json"
 
 def read_leads():
+    """Retorna todos os leads salvos"""
     if not DB_PATH.exists():
         return []
     
